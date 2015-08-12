@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Breeze Whisper">
-    <title>Hello World - Breeze Whisper</title>
+    <title>$(PWD) or $(shell pwd) - Breeze Whisper</title>
     <meta name="author" content="Jerome Wang">
     <meta name="description" content="Breeze Whisper">
     <link rel="icon" href="/assets/images/null">
@@ -130,26 +130,26 @@
     
         <div class="post-header main-content-wrap">
     
-        <h1 class="post-title" itemprop="headline">Hello World</h1>
+        <h1 class="post-title" itemprop="headline">$(PWD) or $(shell pwd)</h1>
     
     <div class="post-meta">
-    <time  itemprop="datePublished" content="Sat Jul 04 2015 12:40:55 GMT+0800">
-        Jul 04, 2015
+    <time  itemprop="datePublished" content="Thu Aug 13 2015 00:40:40 GMT+0800">
+        Aug 13, 2015
     </time>
     
 </div>
 </div>
     
     <div class="post-content markdown main-content-wrap" itemprop="articleBody">
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>Though working with Makefile for quite a long time, I think I would never get a deeper insight into the fact beneath the “$(PWD)” and “$(shell pwd)” until an interesting problem was met just hours ago. And here is what happened:</p>
+<p>I got a Makefile, with some lines like this.<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">TOPDIR</span>=<span class="variable">$(PWD)</span></span><br><span class="line"><span class="constant">CONFIG_FILE</span>=<span class="variable">$(TOPDIR)</span>/config.mk</span><br><span class="line"></span><br><span class="line">include $(CONFIG_FILE)</span><br></pre></td></tr></table></figure></p>
+<p>I typed <code>make</code> as usual, it went well. But when I ran <code>sudo make</code>, the result really perplexed me.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo make</span><br><span class="line">Makefile:<span class="number">4</span>: /config.mk: No such file or directory</span><br><span class="line">make: *** No rule to make target `/config.mk<span class="string">'.  Stop.</span></span><br></pre></td></tr></table></figure>
+<p>I replaced <code>TOPDIR=$(PWD)</code> with <code>TOPDIR=$(shell pwd)</code>, then it went right again. So I realized that something went wrong with “$(PWD)”, though I was not quite clear about the root reason. So more further experiments were made.</p>
+<p>By printing make’s internal datebase using <code>make -p</code>, I found the following lines in the command’s output. So PWD is actually an environment variable used by Makefile, but a internal variable or function of Makefile.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># environment</span></span><br><span class="line">PWD = /Users/jerome/</span><br></pre></td></tr></table></figure></p>
+<p>Hmm, the <code>root</code> user doesn’t have a environment variable named <code>PWD</code>. I thought I have got the answer, but it did not take very long to realize that I was wrong.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">echo</span> $(PWD)</span><br><span class="line">/Users/jerome/</span><br><span class="line">$ sudo <span class="operator">-s</span></span><br><span class="line">$ <span class="built_in">echo</span> $(PWD)</span><br><span class="line">/Users/jerome</span><br><span class="line">$ <span class="built_in">export</span> | grep -w PWD</span><br><span class="line"><span class="built_in">declare</span> -x PWD=<span class="string">"/Users/jerome/"</span></span><br></pre></td></tr></table></figure>
+<p>Yes, as you can see, when we are <code>root</code>, we do have <code>PWD</code> in our environment. Of course, when I ran <code>make</code> as root, but <code>sudo make</code>, it went quit well. So, the <code>sudo</code> must be the ringleader! </p>
 
         
             
@@ -157,12 +157,19 @@
     </div>
     <div class="post-footer main-content-wrap">
         
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Linux/">Linux</a> <a class="tag tag--primary tag--small t-link" href="/tags/Makefile/">Makefile</a> <a class="tag tag--primary tag--small t-link" href="/tags/sudo/">sudo</a>
+
+            </div>
+        
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/22/bash-todo/"  data-tooltip="Lingering Questions on Bash">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -170,7 +177,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/22/bash-todo/" data-tooltip="Lingering Questions on Bash">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -180,17 +187,17 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/07/04/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/07/04/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/07/04/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -225,7 +232,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/22/bash-todo/"  data-tooltip="Lingering Questions on Bash">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -233,7 +240,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/07/22/bash-todo/" data-tooltip="Lingering Questions on Bash">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -243,17 +250,17 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/07/04/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/07/04/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/07/04/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
