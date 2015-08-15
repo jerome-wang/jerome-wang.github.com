@@ -133,8 +133,8 @@
         <h1 class="post-title" itemprop="headline">$(PWD) or $(shell pwd)</h1>
     
     <div class="post-meta">
-    <time  itemprop="datePublished" content="Thu Aug 13 2015 00:40:40 GMT+0800">
-        Aug 13, 2015
+    <time  itemprop="datePublished" content="Sat Aug 15 2015 11:04:47 GMT+0800">
+        Aug 15, 2015
     </time>
     
 </div>
@@ -150,6 +150,13 @@
 <p>Hmm, the <code>root</code> user doesn’t have a environment variable named <code>PWD</code>. I thought I have got the answer, but it did not take very long to realize that I was wrong.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">echo</span> $(PWD)</span><br><span class="line">/Users/jerome/</span><br><span class="line">$ sudo <span class="operator">-s</span></span><br><span class="line">$ <span class="built_in">echo</span> $(PWD)</span><br><span class="line">/Users/jerome</span><br><span class="line">$ <span class="built_in">export</span> | grep -w PWD</span><br><span class="line"><span class="built_in">declare</span> -x PWD=<span class="string">"/Users/jerome/"</span></span><br></pre></td></tr></table></figure>
 <p>Yes, as you can see, when we are <code>root</code>, we do have <code>PWD</code> in our environment. Of course, when I ran <code>make</code> as root, but <code>sudo make</code>, it went quit well. So, the <code>sudo</code> must be the ringleader! </p>
+<p>So here’s the truth: When we invoke a command via sudo, sudo will fork another process to perform the command. And for some security reasons or of other aspects, not all the environments of the current process will be inheritted. The following example will demonstrate this point:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ printenv | grep PWD</span><br><span class="line">PWD=/Users/jerome</span><br><span class="line">$ sudo printenv | grep PWD</span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+<p>By reading the manual of sudo, I found at least 2 methods are avaliable to walk across this issue. Method 1 is using <code>-E</code> option.</p>
+<pre><code class="bash">$ sudo -E printenv | grep PWD
+PWD=/Users/jerome
+</code></pre>
+<p>And method 2 is modifying <code>/etc/sudoers</code>, the config file for sudo. More details could be found by <code>man sudoers</code>.</p>
 
         
             
@@ -187,17 +194,17 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -250,17 +257,17 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/08/13/pwd-in-sudo-make/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
