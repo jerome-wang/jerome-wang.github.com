@@ -4,9 +4,9 @@
   <title><![CDATA[Breeze Whisper]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="https://wangquzhi.github.io//"/>
+  <link href="https://jerome-wang.github.io//"/>
   <updated>2015-08-15T03:09:20.000Z</updated>
-  <id>https://wangquzhi.github.io//</id>
+  <id>https://jerome-wang.github.io//</id>
   
   <author>
     <name><![CDATA[Jerome Wang]]></name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title><![CDATA[$(PWD) or $(shell pwd)]]></title>
-    <link href="https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/"/>
-    <id>https://wangquzhi.github.io/2015/08/15/pwd-in-sudo-make/</id>
+    <link href="https://jerome-wang.github.io/2015/08/15/pwd-in-sudo-make/"/>
+    <id>https://jerome-wang.github.io/2015/08/15/pwd-in-sudo-make/</id>
     <published>2015-08-15T03:09:20.000Z</published>
     <updated>2015-08-15T03:09:20.000Z</updated>
     <content type="html"><![CDATA[<p>Though working with Makefile for quite a long time, I think I would never get a deeper insight into the fact beneath the “$(PWD)” and “$(shell pwd)” until an interesting problem was met just hours ago. And here is what happened:</p>
@@ -40,18 +40,18 @@
     <![CDATA[<p>Though working with Makefile for quite a long time, I think I would never get a deeper insight into the fact beneath the “$(PWD)” and “$(]]>
     </summary>
     
-      <category term="Linux" scheme="https://wangquzhi.github.io/tags/Linux/"/>
+      <category term="Linux" scheme="https://jerome-wang.github.io/tags/Linux/"/>
     
-      <category term="Makefile" scheme="https://wangquzhi.github.io/tags/Makefile/"/>
+      <category term="Makefile" scheme="https://jerome-wang.github.io/tags/Makefile/"/>
     
-      <category term="sudo" scheme="https://wangquzhi.github.io/tags/sudo/"/>
+      <category term="sudo" scheme="https://jerome-wang.github.io/tags/sudo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Lingering Questions on Bash]]></title>
-    <link href="https://wangquzhi.github.io/2015/07/22/bash-todo/"/>
-    <id>https://wangquzhi.github.io/2015/07/22/bash-todo/</id>
+    <link href="https://jerome-wang.github.io/2015/07/22/bash-todo/"/>
+    <id>https://jerome-wang.github.io/2015/07/22/bash-todo/</id>
     <published>2015-07-22T15:16:16.000Z</published>
     <updated>2015-07-22T15:16:16.000Z</updated>
     <content type="html"><![CDATA[<ul>
@@ -71,8 +71,8 @@
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="https://wangquzhi.github.io/2015/07/04/hello-world/"/>
-    <id>https://wangquzhi.github.io/2015/07/04/hello-world/</id>
+    <link href="https://jerome-wang.github.io/2015/07/04/hello-world/"/>
+    <id>https://jerome-wang.github.io/2015/07/04/hello-world/</id>
     <published>2015-07-04T04:40:55.000Z</published>
     <updated>2015-07-04T04:40:55.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
