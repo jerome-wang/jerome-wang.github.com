@@ -63,7 +63,7 @@ Email: wangquzhi@foxmail.com
 
 教育经历
 2008.09 ~ 201">
-<meta property="og:updated_time" content="2015-08-18T16:15:00.000Z">
+<meta property="og:updated_time" content="2015-08-19T14:15:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简历">
 <meta name="twitter:description" content="基本信息
@@ -233,10 +233,10 @@ Email: wangquzhi@foxmail.com
 </ul>
 <h1 id="项目经历">项目经历</h1><h2 id="2014-03_Linux平台switch芯片驱动程序通用框架设计">2014.03 Linux平台switch芯片驱动程序通用框架设计</h2><p>关键词：VLAN，802.1Q，Switch，Linux Driver</p>
 <hr>
-<p>基于多个厂商的switch芯片配套SDK，分析总结共同点与差异，抽象出一套通用switch驱动框架，作为SDK的再次封装，为上层提供统一接口。</p>
+<p>基于多个厂商的switch芯片配套SDK，分析总结共同点与差异点，抽象出一套通用switch驱动框架，作为SDK的再次封装，为上层提供统一接口。</p>
 <h2 id="2013-09_MIPS_Linux平台内存泄漏检测工具优化">2013.09 MIPS Linux平台内存泄漏检测工具优化</h2><p>关键词：MIPS，Kernel，Memleak</p>
 <hr>
-<p>调试协议栈相关内核态内存泄漏问题时，Linux原生的内存泄漏检测工具Memleak会带来较大的系统性能损耗，甚至会极大的影响调试效率。通过分析原有检测算法，在不影响实际需求的前提下，对原有代码进行删减，优化，极大的降低了工具本身带来的性能消耗，为定位问题提供很大便利。</p>
+<p>调试协议栈相关内核态内存泄漏问题时，Linux原生的内存泄漏检测工具Memleak会带来较大的系统性能损耗，会极大的影响调试效率。通过分析原有检测算法，在不影响实际需求的前提下，对原有代码进行删减，优化，极大的降低了工具本身带来的性能消耗，为定位问题提供很大便利。</p>
 <h2 id="2013-05_基于STM32的信号采集系统设计">2013.05 基于STM32的信号采集系统设计</h2><p>关键词：Uboot，LwIP，FAT32，SD，CLI，UCOS-II</p>
 <hr>
 <ul>
@@ -256,9 +256,22 @@ Email: wangquzhi@foxmail.com
 </ul>
 <h2 id="2013-02_Foxmail邮件格式转换工具">2013.02 Foxmail邮件格式转换工具</h2><p>关键词： Foxmail，mbox，Python</p>
 <hr>
-<h2 id="2012-11_C语言版轻量级DNS解析库设计">2012.11 C语言版轻量级DNS解析库设计</h2><p>关键词：BIND，C，DNS</p>
+<p>逆向分析Foxmail客户端的邮件存档文件格式，将其转化为更为通用的mbox格式的邮件存档，以导入其他邮件客户端使用。</p>
+<h2 id="2012-11_C语言版轻量级DNS报文解析库设计">2012.11 C语言版轻量级DNS报文解析库设计</h2><p>关键词：BIND，C，DNS</p>
 <hr>
-<h2 id="2012-05_基于CUDA的并行化雷达BP成像算法设计">2012.05 基于CUDA的并行化雷达BP成像算法设计</h2><h2 id="2012-04_基于FPGA的三次B样条曲面插值算法设计">2012.04 基于FPGA的三次B样条曲面插值算法设计</h2><h2 id="2011-04_基于ncurses文本界面的音频频谱显示系统设计">2011.04 基于ncurses文本界面的音频频谱显示系统设计</h2><h2 id="2011-09_吉他调音器软件设计">2011.09 吉他调音器软件设计</h2><h2 id="2009-04_基于电磁传感器的巡线机器人系统设计">2009.04 基于电磁传感器的巡线机器人系统设计</h2></span>
+<p>某项目需要在协议栈中直接对DNS报文进行解析，提取其中数据供其他模块分析使用。由于现有平台并无完整的DNS报文解析工具，因此参考BIND9 DNS服务器的源代码，设计实现了一套轻量级的DNS报文解析库。由于该解析库主要用于资源较少的嵌入式平台，因此在内存使用方面做了一定的优化。</p>
+<h2 id="2012-05_基于CUDA的并行化雷达BP成像算法设计">2012.05 基于CUDA的并行化雷达BP成像算法设计</h2><p>关键词：CUDA，并行计算，BP算法，雷达成像算法</p>
+<hr>
+<p>对BP雷达成像算法进行分析，抽取算法中的并行成分，同时针对NVIDA公司推出的CUDA平台的计算模型，设计出一套高效的并行BP成像算法。等量的计算资源配置下，并行算法与原始算法相比，运算效率提高了两个数量级。</p>
+<h2 id="2012-04_基于FPGA的三次B样条曲面插值算法设计">2012.04 基于FPGA的三次B样条曲面插值算法设计</h2><p>关键词：B样条插值算法，FPGA</p>
+<hr>
+<p>某公司需要提高其三维雕刻系统的加工精度，需要通过插值算法对原始模型数据进行进一步丰富，从而使成品具有更高的表面光滑度。然而，由于原始模型数据数据量较大，典型的插值算法运行时需要消耗大量的内存以及CPU计算资源，进而会提高设备成本，同时降低加工效率。<br>通过对三次B样条算法进行分析，并根据模型数据特点，设计出了一套基于FPGA的三次B样条曲面插值单元。一个插值单元使用固定的大小内存资源，多个插值单元可以并行工作以提高产出效率。从而较好的解决了现有的加工精度与系统成本的矛盾。</p>
+<h2 id="2011-04_基于ncurses文本界面的音频频谱显示系统设计">2011.04 基于ncurses文本界面的音频频谱显示系统设计</h2><p>关键词：FFT，频谱仪，ncurses</p>
+<hr>
+<p>通过对输入音频流进行频谱分析，并结合ncurses库，在Linux平台上，实现了一个基于文本界面的频谱显示器应用程序。该应用程序实现了类似于音乐播放器中实时音乐频谱显示插件的显示效果。</p>
+<h2 id="2011-09_吉他调音器软件设计">2011.09 吉他调音器软件设计</h2><p>关键词：Linux，吉他调音器</p>
+<hr>
+<h2 id="2009-04_基于电磁传感器的巡线机器人系统设计">2009.04 基于电磁传感器的巡线机器人系统设计</h2></span>
       
     </div>
 
@@ -372,7 +385,7 @@ Email: wangquzhi@foxmail.com
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本信息"><span class="nav-number">1.</span> <span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作经验"><span class="nav-number">2.</span> <span class="nav-text">工作经验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教育经历"><span class="nav-number">3.</span> <span class="nav-text">教育经历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目经历"><span class="nav-number">4.</span> <span class="nav-text">项目经历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2014-03_Linux平台switch芯片驱动程序通用框架设计"><span class="nav-number">4.1.</span> <span class="nav-text">2014.03 Linux平台switch芯片驱动程序通用框架设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-09_MIPS_Linux平台内存泄漏检测工具优化"><span class="nav-number">4.2.</span> <span class="nav-text">2013.09 MIPS Linux平台内存泄漏检测工具优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-05_基于STM32的信号采集系统设计"><span class="nav-number">4.3.</span> <span class="nav-text">2013.05 基于STM32的信号采集系统设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-03_VxWorks系统内存镜像分析工具设计"><span class="nav-number">4.4.</span> <span class="nav-text">2013.03 VxWorks系统内存镜像分析工具设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-02_Foxmail邮件格式转换工具"><span class="nav-number">4.5.</span> <span class="nav-text">2013.02 Foxmail邮件格式转换工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2012-11_C语言版轻量级DNS解析库设计"><span class="nav-number">4.6.</span> <span class="nav-text">2012.11 C语言版轻量级DNS解析库设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2012-05_基于CUDA的并行化雷达BP成像算法设计"><span class="nav-number">4.7.</span> <span class="nav-text">2012.05 基于CUDA的并行化雷达BP成像算法设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2012-04_基于FPGA的三次B样条曲面插值算法设计"><span class="nav-number">4.8.</span> <span class="nav-text">2012.04 基于FPGA的三次B样条曲面插值算法设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2011-04_基于ncurses文本界面的音频频谱显示系统设计"><span class="nav-number">4.9.</span> <span class="nav-text">2011.04 基于ncurses文本界面的音频频谱显示系统设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2011-09_吉他调音器软件设计"><span class="nav-number">4.10.</span> <span class="nav-text">2011.09 吉他调音器软件设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2009-04_基于电磁传感器的巡线机器人系统设计"><span class="nav-number">4.11.</span> <span class="nav-text">2009.04 基于电磁传感器的巡线机器人系统设计</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本信息"><span class="nav-number">1.</span> <span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作经验"><span class="nav-number">2.</span> <span class="nav-text">工作经验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教育经历"><span class="nav-number">3.</span> <span class="nav-text">教育经历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目经历"><span class="nav-number">4.</span> <span class="nav-text">项目经历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2014-03_Linux平台switch芯片驱动程序通用框架设计"><span class="nav-number">4.1.</span> <span class="nav-text">2014.03 Linux平台switch芯片驱动程序通用框架设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-09_MIPS_Linux平台内存泄漏检测工具优化"><span class="nav-number">4.2.</span> <span class="nav-text">2013.09 MIPS Linux平台内存泄漏检测工具优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-05_基于STM32的信号采集系统设计"><span class="nav-number">4.3.</span> <span class="nav-text">2013.05 基于STM32的信号采集系统设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-03_VxWorks系统内存镜像分析工具设计"><span class="nav-number">4.4.</span> <span class="nav-text">2013.03 VxWorks系统内存镜像分析工具设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013-02_Foxmail邮件格式转换工具"><span class="nav-number">4.5.</span> <span class="nav-text">2013.02 Foxmail邮件格式转换工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2012-11_C语言版轻量级DNS报文解析库设计"><span class="nav-number">4.6.</span> <span class="nav-text">2012.11 C语言版轻量级DNS报文解析库设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2012-05_基于CUDA的并行化雷达BP成像算法设计"><span class="nav-number">4.7.</span> <span class="nav-text">2012.05 基于CUDA的并行化雷达BP成像算法设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2012-04_基于FPGA的三次B样条曲面插值算法设计"><span class="nav-number">4.8.</span> <span class="nav-text">2012.04 基于FPGA的三次B样条曲面插值算法设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2011-04_基于ncurses文本界面的音频频谱显示系统设计"><span class="nav-number">4.9.</span> <span class="nav-text">2011.04 基于ncurses文本界面的音频频谱显示系统设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2011-09_吉他调音器软件设计"><span class="nav-number">4.10.</span> <span class="nav-text">2011.09 吉他调音器软件设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2009-04_基于电磁传感器的巡线机器人系统设计"><span class="nav-number">4.11.</span> <span class="nav-text">2009.04 基于电磁传感器的巡线机器人系统设计</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
