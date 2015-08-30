@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="Bash," />
 
 
 
@@ -39,19 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="你是否会有这样的需求呢：在Linux/Mac系统下，需要安装同一软件的不同版本，然后通过修改PATH环境变量，使新安装的版本生效？这个时候，可能就要小心了。我就遇到了这样的一个问题。
+奇怪的问题Mac系统已经自带有Python，然而由于与其他软件的兼容问题，需要同时安装原生的Python。于是：12345678$ echo $PATH/usr/local/bin:/usr/bin:/bin:/us">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://jerome-wang.github.io/2015/07/04/hello-world/index.html">
+<meta property="og:title" content="小心bash的hash坑了你">
+<meta property="og:url" content="https://jerome-wang.github.io/2015/08/30/bash-hash/index.html">
 <meta property="og:site_name" content="Breeze Whisper">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2015-07-04T04:40:55.000Z">
+<meta property="og:description" content="你是否会有这样的需求呢：在Linux/Mac系统下，需要安装同一软件的不同版本，然后通过修改PATH环境变量，使新安装的版本生效？这个时候，可能就要小心了。我就遇到了这样的一个问题。
+奇怪的问题Mac系统已经自带有Python，然而由于与其他软件的兼容问题，需要同时安装原生的Python。于是：12345678$ echo $PATH/usr/local/bin:/usr/bin:/bin:/us">
+<meta property="og:updated_time" content="2015-08-30T04:38:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="小心bash的hash坑了你">
+<meta name="twitter:description" content="你是否会有这样的需求呢：在Linux/Mac系统下，需要安装同一软件的不同版本，然后通过修改PATH环境变量，使新安装的版本生效？这个时候，可能就要小心了。我就遇到了这样的一个问题。
+奇怪的问题Mac系统已经自带有Python，然而由于与其他软件的兼容问题，需要同时安装原生的Python。于是：12345678$ echo $PATH/usr/local/bin:/usr/bin:/bin:/us">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +61,7 @@ Quick">
   };
 </script>
 
-  <title> Hello World | Breeze Whisper </title>
+  <title> 小心bash的hash坑了你 | Breeze Whisper </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -168,7 +168,7 @@ Quick">
           
           
             
-              Hello World
+              小心bash的hash坑了你
             
           
         </h1>
@@ -177,8 +177,8 @@ Quick">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-07-04T12:40:55+08:00" content="2015-07-04">
-            2015-07-04
+          <time itemprop="dateCreated" datetime="2015-08-30T11:50:08+08:00" content="2015-08-30">
+            2015-08-30
           </time>
         </span>
 
@@ -196,31 +196,39 @@ Quick">
       
 
       
-        <span itemprop="articleBody"><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <span itemprop="articleBody"><p>你是否会有这样的需求呢：在Linux/Mac系统下，需要安装同一软件的不同版本，然后通过修改PATH环境变量，使新安装的版本生效？这个时候，可能就要小心了。我就遇到了这样的一个问题。</p>
+<h1 id="奇怪的问题">奇怪的问题</h1><p>Mac系统已经自带有Python，然而由于与其他软件的兼容问题，需要同时安装原生的Python。于是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin</span><br><span class="line">$ <span class="built_in">which</span> python</span><br><span class="line">/usr/bin/python</span><br><span class="line">$ brew install python</span><br><span class="line">...</span><br><span class="line">$ <span class="built_in">which</span> python</span><br><span class="line">/usr/<span class="built_in">local</span>/bin/python</span><br></pre></td></tr></table></figure></p>
+<p>到这里，原生的Python已经安装完成。新安装的Python的软链接放在/usr/local/bin目录下。此时执行python命令，结果却让我觉的简直是日了狗了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ python</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">6</span> (default, Sep  <span class="number">9</span> <span class="number">2014</span>, <span class="number">15</span>:<span class="number">04</span>:<span class="number">36</span>) </span><br><span class="line">[GCC <span class="number">4.2</span>.<span class="number">1</span> Compatible Apple LLVM <span class="number">6.0</span> (clang-<span class="number">600.0</span>.<span class="number">39</span>)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; quit()</span><br><span class="line">$</span><br><span class="line">$ /usr/bin/python</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">6</span> (default, Sep  <span class="number">9</span> <span class="number">2014</span>, <span class="number">15</span>:<span class="number">04</span>:<span class="number">36</span>) </span><br><span class="line">[GCC <span class="number">4.2</span>.<span class="number">1</span> Compatible Apple LLVM <span class="number">6.0</span> (clang-<span class="number">600.0</span>.<span class="number">39</span>)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; quit()</span><br><span class="line">$</span><br><span class="line">$ /usr/<span class="built_in">local</span>/bin/python</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">10</span> (default, Aug <span class="number">30</span> <span class="number">2015</span>, <span class="number">11</span>:<span class="number">33</span>:<span class="number">20</span>) </span><br><span class="line">[GCC <span class="number">4.2</span>.<span class="number">1</span> Compatible Apple LLVM <span class="number">6.1</span>.<span class="number">0</span> (clang-<span class="number">602.0</span>.<span class="number">53</span>)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; quit()</span><br></pre></td></tr></table></figure></p>
+<p>从上面Python打印的时间戳不难看出，虽然which已经正确的找到了新安装的Python，但是当执行python命令是，实际执行的仍然是旧版的Python。但是此时，如果我再重新开一个Terminal，执行python命令，却可以正确的执行新安装的python命令。</p>
+<h1 id="Bash的命令缓存">Bash的命令缓存</h1><p>缓存？经过一番搜索，Bash果然有所谓的命令缓存。查阅Bash的manual，搜索hash关键字，可以得到如下的说明：</p>
+<blockquote>
+<p>After a command has been split into words, if it results in a simple command and an optional list  of arguments, the following actions are taken.<br>If the command name contains no slashes,  the  shell  attempts  to locate  it.If  there exists a shell function by that name, that function is invoked as described above in FUNCTIONS.  If the  name does  not  match a function, the shell searches for it in the list of shell builtins.  If a match is found, that builtin is  invoked.<br>If  the  name  is neither a shell function nor a builtin, and contains no slashes, bash searches each element of  the  PATH  for  a directory containing an executable file by that name.  <strong><em>Bash uses a hash table to remember the full pathnames of executable files (see hash  under  SHELL  BUILTIN COMMANDS below).  A full search of the directories in PATH is performed only if the command is not  found in the hash table.</em></strong> If  the  search is unsuccessful, the shell prints an error message and returns an exit status of 127.</p>
+</blockquote>
+<p>根据说明，可以通过内置命令hash来管理相应的hash table：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">hash</span> <span class="operator">-l</span> <span class="comment"># 列出当前的hash table</span></span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /usr/bin/<span class="built_in">which</span> <span class="built_in">which</span></span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /usr/<span class="built_in">local</span>/bin/brew brew</span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /usr/bin/man man</span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /bin/ls ls</span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /usr/bin/python python</span><br><span class="line">$ <span class="built_in">hash</span> <span class="operator">-d</span> python <span class="comment"># 删除hash table中的python条目</span></span><br><span class="line">$ <span class="built_in">hash</span> <span class="operator">-l</span></span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /usr/bin/<span class="built_in">which</span> <span class="built_in">which</span></span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /usr/<span class="built_in">local</span>/bin/brew brew</span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /usr/bin/man man</span><br><span class="line"><span class="built_in">builtin</span> <span class="built_in">hash</span> -p /bin/ls ls</span><br><span class="line">$ python</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">10</span> (default, Aug <span class="number">30</span> <span class="number">2015</span>, <span class="number">11</span>:<span class="number">33</span>:<span class="number">20</span>) </span><br><span class="line">[GCC <span class="number">4.2</span>.<span class="number">1</span> Compatible Apple LLVM <span class="number">6.1</span>.<span class="number">0</span> (clang-<span class="number">602.0</span>.<span class="number">53</span>)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; quit()</span><br></pre></td></tr></table></figure></p>
+<p>除了上面的-l和-d参数，还有-r参数。该参数用于删除当前hash table中的所有条目。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">hash</span> -r</span><br><span class="line">$ <span class="built_in">hash</span> <span class="operator">-l</span></span><br><span class="line"><span class="built_in">hash</span>: <span class="built_in">hash</span> table empty</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结">总结</h1><p>在安装了新软件同时系统中有旧版本的软件共存时，记得执行<code>hash -r</code>来让新安装的软件生效。</p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Bash/" rel="tag">#Bash</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/22/bash-todo/" rel="prev">Lingering Questions on Bash</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/13/pwd-in-sudo-make/" rel="next">$(PWD) or $(shell pwd)</a>
             
           </div>
         </div>
@@ -331,7 +339,7 @@ Quick">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick_Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_new_post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run_server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate_static_files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_to_remote_sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#奇怪的问题"><span class="nav-number">1.</span> <span class="nav-text">奇怪的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bash的命令缓存"><span class="nav-number">2.</span> <span class="nav-text">Bash的命令缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
